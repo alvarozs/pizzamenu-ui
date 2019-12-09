@@ -6,11 +6,11 @@ export const initialState = {
   error: false,
   currentUser: false,
   userData: {
-    repositories: false,
+    pizzas: [],
   },
 };
 
-function appReducer(state = initialState, action) {
+function pizzasReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_PIZZAS: {
       const newState = {
@@ -43,4 +43,4 @@ function appReducer(state = initialState, action) {
   }
 }
 
-export default appReducer;
+export default pizzasReducer;

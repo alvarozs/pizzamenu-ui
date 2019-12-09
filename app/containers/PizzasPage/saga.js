@@ -1,12 +1,12 @@
 /**
- * Gets the repositories of the user from Github
+ * Gets the pizzas of the user from Github
  */
 
 import {
   call, put, takeLatest
 } from 'redux-saga/effects';
-import { LOAD_PIZZAS } from 'containers/App/constants';
-import { pizzasLoaded, repoLoadingError } from 'containers/App/actions';
+import { LOAD_PIZZAS } from 'containers/PizzasPage/constants';
+import { toppingsLoaded, repoLoadingError } from 'containers/PizzasPage/actions';
 
 import request from 'utils/request';
 
@@ -18,7 +18,7 @@ export function* getPizzas() {
 
   try {
     const pizzas = yield call(request, requestURL);
-    yield put(pizzasLoaded(pizzas));
+    yield put(toppingsLoaded(pizzas));
   } catch (err) {
     yield put(repoLoadingError(err));
   }
