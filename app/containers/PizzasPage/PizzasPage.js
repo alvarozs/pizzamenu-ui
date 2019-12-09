@@ -22,6 +22,14 @@ export default function PizzasPage({ pizzas }) {
         />
       </Helmet>
       <h1>List of Pizzas</h1>
+      <ul>
+        {
+          pizzas && pizzas.map( pizza => {
+            console.log(pizza);
+            return <li key={pizza.id}>{pizza.name}</li>;
+          })
+        }
+      </ul>
     </div>
   );
 }
