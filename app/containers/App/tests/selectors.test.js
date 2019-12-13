@@ -5,7 +5,7 @@ import {
   makeSelectError,
   makeSelectPizzas,
   makeSelectLocation,
-} from '../selectors';
+} from '../../PizzasPage/selectors';
 
 describe('selectGlobal', () => {
   it('should select the global state', () => {

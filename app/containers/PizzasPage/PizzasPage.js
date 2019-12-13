@@ -10,8 +10,6 @@ import PropTypes from 'prop-types';
 
 
 export default function PizzasPage({ pizzas }) {
-  console.log(pizzas);
-
   return (
     <div className="feature-page">
       <Helmet>
@@ -24,10 +22,7 @@ export default function PizzasPage({ pizzas }) {
       <h1>List of Pizzas</h1>
       <ul>
         {
-          pizzas && pizzas.map( pizza => {
-            console.log(pizza);
-            return <li key={pizza.id}>{pizza.name}</li>;
-          })
+          pizzas && pizzas.map((pizza) => <li key={pizza.id}>{pizza.name}</li>)
         }
       </ul>
     </div>

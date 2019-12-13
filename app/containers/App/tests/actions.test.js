@@ -2,13 +2,13 @@ import {
   LOAD_PIZZAS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
-} from '../constants';
+} from '../../PizzasPage/constants';
 
 import {
   loadPizzas,
   pizzasLoaded,
   repoLoadingError,
-} from '../actions';
+} from '../../PizzasPage/actions';
 
 describe('App Actions', () => {
   describe('loadRepos', () => {

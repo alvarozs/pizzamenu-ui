@@ -1,5 +1,5 @@
-import appReducer from '../reducer';
-import { loadPizzas, pizzasLoaded, repoLoadingError } from '../actions';
+import appReducer from '../../PizzasPage/reducer';
+import { loadPizzas, pizzasLoaded, repoLoadingError } from '../../PizzasPage/actions';
 
 describe('appReducer', () => {
   let state;

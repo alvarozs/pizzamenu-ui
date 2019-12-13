@@ -8,7 +8,7 @@ import { shallow, mount } from 'enzyme';
 import HomePage from '../HomePage';
 import { mapDispatchToProps } from '../index';
 import { changeUsername } from '../actions';
-import { loadPizzas } from '../../App/actions';
+import { loadPizzas } from '../../PizzasPage/actions';
 
 describe('<HomePage />', () => {
   it('should render fetch the repos on mount if a username exists', () => {

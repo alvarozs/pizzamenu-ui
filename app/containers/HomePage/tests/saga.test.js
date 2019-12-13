@@ -4,8 +4,8 @@
 
 import { put, takeLatest } from 'redux-saga/effects';
 
-import { LOAD_PIZZAS } from 'containers/App/constants';
-import { pizzasLoaded, repoLoadingError } from 'containers/App/actions';
+import { LOAD_PIZZAS } from 'containers/PizzasPage/constants';
+import { pizzasLoaded, repoLoadingError } from 'containers/PizzasPage/actions';
 
 import getAllPizzas, { getPizzas } from '../saga';
 
