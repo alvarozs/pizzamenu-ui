@@ -10,7 +10,7 @@ export function loadPizzas() {
   };
 }
 
-export function pizzasLoaded(pizzas) {
+export function toppingsLoaded(pizzas) {
   return {
     type: LOAD_PIZZAS_SUCCESS,
     pizzas

@@ -1,4 +1,4 @@
-import { LOAD_PIZZAS, LOAD_PIZZAS_SUCCESS, LOAD_PIZZAS_ERROR } from './constants';
+import { LOAD_TOPPINGS, LOAD_TOPPINGS_SUCCESS, LOAD_TOPPINGS_ERROR } from './constants';
 
 // The initial state of the App
 export const initialState = {
@@ -6,36 +6,36 @@ export const initialState = {
   error: false,
   currentUser: false,
   userData: {
-    pizzas: [],
+    toppings: [],
   },
 };
 
-function pizzasReducer(state = initialState, action) {
+function toppingsReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_PIZZAS: {
+    case LOAD_TOPPINGS: {
       const newState = {
         ...state,
         loading: true,
         error: false,
         userData: {
-          pizzas: [],
+          toppings: [],
         },
       };
 
       return newState;
     }
-    case LOAD_PIZZAS_SUCCESS: {
+    case LOAD_TOPPINGS_SUCCESS: {
       const newState = {
         ...state,
         loading: false,
         userData: {
-          pizzas: action.pizzas,
+          toppings: action.toppings,
         }
       };
       return newState;
     }
 
-    case LOAD_PIZZAS_ERROR: {
+    case LOAD_TOPPINGS_ERROR: {
       return { ...state, error: action.error, loading: false };
     }
     default:
@@ -43,4 +43,4 @@ function pizzasReducer(state = initialState, action) {
   }
 }
 
-export default pizzasReducer;
+export default toppingsReducer;

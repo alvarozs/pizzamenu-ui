@@ -4,21 +4,12 @@
  * This is the first thing users see of our App, at the '/' route
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import './style.scss';
 
-const useFetching = (someFetchActionCreator) => {
-  useEffect(() => {
-    someFetchActionCreator();
-  }, []);
-};
-
-export default function HomePage({ loadPizzas }) { // eslint-disable-line react/prefer-stateless-function
-  useFetching(loadPizzas);
-
+export default function HomePage() {
   return (
     <article>
       <Helmet>
@@ -31,7 +22,3 @@ export default function HomePage({ loadPizzas }) { // eslint-disable-line react/
     </article>
   );
 }
-
-HomePage.propTypes = {
-  loadPizzas: PropTypes.func,
-};

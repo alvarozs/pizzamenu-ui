@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-const selectGlobal = (state) => state.pizzas || initialState;
+const selectGlobal = (state) => state.toppings || initialState;
 
 const makeSelectLoading = () => createSelector(
   selectGlobal,
@@ -13,14 +13,13 @@ const makeSelectError = () => createSelector(
   (globalState) => globalState.error
 );
 
-const makeSelectPizzas = () => createSelector(
+const makeSelectToppings = () => createSelector(
   selectGlobal,
-  (globalState) => globalState.userData.pizzas
+  (globalState) => globalState.userData.toppings
 );
 
 export {
-  selectGlobal,
+  makeSelectToppings,
   makeSelectLoading,
   makeSelectError,
-  makeSelectPizzas,
 };

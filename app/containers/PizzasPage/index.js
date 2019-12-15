@@ -23,7 +23,7 @@ const mapStateToProps = createStructuredSelector({
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withSaga = injectSaga({ key: 'home', saga });
+const withSaga = injectSaga({ key: 'pizzas', saga });
 
 export default compose(withSaga, withConnect)(PizzasPage);
 export { mapDispatchToProps };
