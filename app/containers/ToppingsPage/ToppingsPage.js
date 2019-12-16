@@ -7,6 +7,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import './style.scss';
 import PropTypes from 'prop-types';
+import AddToppingForm from 'components/AddToppingForm';
 import { useFetching } from '../../helpers/hooks';
 
 export const EmptyList = () => (<li><p>There is no toppings on the system.</p></li>);
@@ -24,7 +25,7 @@ export const ToppingList = ({ toppings }) => (
   </>
 );
 
-export default function ToppingsPage({ loadToppings, toppings = [] }) {
+export default function ToppingsPage({ loadToppings, addTopping, toppings = [] }) {
   useFetching(loadToppings);
 
   return (
@@ -37,12 +38,14 @@ export default function ToppingsPage({ loadToppings, toppings = [] }) {
         />
       </Helmet>
       <ToppingList toppings={toppings} />
+      <AddToppingForm addTopping={(data) => addTopping(data)} />
     </div>
   );
 }
 
 ToppingsPage.propTypes = {
   loadToppings: PropTypes.func,
+  addTopping: PropTypes.func,
   toppings: PropTypes.arrayOf(
     PropTypes.shape
   ),
