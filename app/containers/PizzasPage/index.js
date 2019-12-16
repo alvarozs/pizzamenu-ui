@@ -7,12 +7,13 @@ import {
   makeSelectLoading,
   makeSelectError
 } from 'containers/PizzasPage/selectors';
-import { loadPizzas } from './actions';
+import { loadPizzas, addPizza } from './actions';
 import saga from './saga';
 import PizzasPage from './PizzasPage';
 
 const mapDispatchToProps = (dispatch) => ({
   loadPizzas: () => dispatch(loadPizzas()),
+  addPizza: (data) => dispatch(addPizza(data)),
 });
 
 const mapStateToProps = createStructuredSelector({

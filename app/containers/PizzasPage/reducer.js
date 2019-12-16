@@ -4,8 +4,7 @@ import { LOAD_PIZZAS, LOAD_PIZZAS_SUCCESS, LOAD_PIZZAS_ERROR } from './constants
 export const initialState = {
   loading: false,
   error: false,
-  currentUser: false,
-  userData: {
+  data: {
     pizzas: [],
   },
 };
@@ -17,7 +16,7 @@ function pizzasReducer(state = initialState, action) {
         ...state,
         loading: true,
         error: false,
-        userData: {
+        data: {
           pizzas: [],
         },
       };
@@ -28,7 +27,7 @@ function pizzasReducer(state = initialState, action) {
       const newState = {
         ...state,
         loading: false,
-        userData: {
+        data: {
           pizzas: action.pizzas,
         }
       };

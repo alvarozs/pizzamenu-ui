@@ -15,7 +15,7 @@ const makeSelectError = () => createSelector(
 
 const makeSelectToppings = () => createSelector(
   selectGlobal,
-  (globalState) => globalState.userData.toppings
+  (globalState) => globalState.data.toppings
 );
 
 export {
