@@ -7,12 +7,13 @@ import {
   makeSelectLoading,
   makeSelectError
 } from './selectors';
-import { loadToppings } from './actions';
+import { loadToppings, addTopping } from './actions';
 import saga from './saga';
 import ToppingsPage from './ToppingsPage';
 
 const mapDispatchToProps = (dispatch) => ({
   loadToppings: () => dispatch(loadToppings()),
+  addTopping: (data) => dispatch(addTopping(data)),
 });
 
 const mapStateToProps = createStructuredSelector({
