@@ -7,6 +7,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import './style.scss';
 import PropTypes from 'prop-types';
+import AddPizzaForm from 'components/AddPizzaForm';
 import { useFetching } from '../../helpers/hooks';
 
 export const EmptyList = () => (<li><p>There is no pizzas on the system.</p></li>);
@@ -24,7 +25,7 @@ export const PizzasList = ({ pizzas }) => (
   </>
 );
 
-export default function PizzasPage({ loadPizzas, pizzas = [] }) {
+export default function PizzasPage({ loadPizzas, addPizza, pizzas = [] }) {
   useFetching(loadPizzas);
 
   return (
@@ -37,12 +38,14 @@ export default function PizzasPage({ loadPizzas, pizzas = [] }) {
         />
       </Helmet>
       <PizzasList pizzas={pizzas} />
+      <AddPizzaForm addPizza={(data) => addPizza(data)} />
     </div>
   );
 }
 
 PizzasPage.propTypes = {
   loadPizzas: PropTypes.func,
+  addPizza: PropTypes.func,
   pizzas: PropTypes.arrayOf(
     PropTypes.shape
   ),

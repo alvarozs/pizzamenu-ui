@@ -4,8 +4,7 @@ import { LOAD_TOPPINGS, LOAD_TOPPINGS_SUCCESS, LOAD_TOPPINGS_ERROR } from './con
 export const initialState = {
   loading: false,
   error: false,
-  currentUser: false,
-  userData: {
+  data: {
     toppings: [],
   },
 };
@@ -17,7 +16,7 @@ function toppingsReducer(state = initialState, action) {
         ...state,
         loading: true,
         error: false,
-        userData: {
+        data: {
           toppings: [],
         },
       };
@@ -28,7 +27,7 @@ function toppingsReducer(state = initialState, action) {
       const newState = {
         ...state,
         loading: false,
-        userData: {
+        data: {
           toppings: action.toppings,
         }
       };

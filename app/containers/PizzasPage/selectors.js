@@ -15,7 +15,7 @@ const makeSelectError = () => createSelector(
 
 const makeSelectPizzas = () => createSelector(
   selectGlobal,
-  (globalState) => globalState.userData.pizzas
+  (globalState) => globalState.data.pizzas
 );
 
 export {
