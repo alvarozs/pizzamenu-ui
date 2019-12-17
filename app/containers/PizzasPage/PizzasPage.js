@@ -11,7 +11,14 @@ import AddPizzaForm from 'components/AddPizzaForm';
 import { useFetching } from '../../helpers/hooks';
 
 export const EmptyList = () => (<li><p>There is no pizzas on the system.</p></li>);
-export const Pizza = ({ pizza }) => (<li key={pizza.id}><p>{pizza.name}</p></li>);
+export const Pizza = ({ pizza }) => (
+  <li key={pizza.id}>
+    <p>{pizza.name}</p>
+    {pizza.toppings && pizza.toppings.map((topping) => (
+      <i key={`pizza${pizza.id}topping${topping.id}`}>{topping.name}, </i>
+    ))}
+  </li>
+);
 
 // candidate to be moved to its own js file for maintainability purpose
 export const PizzasList = ({ pizzas }) => (
