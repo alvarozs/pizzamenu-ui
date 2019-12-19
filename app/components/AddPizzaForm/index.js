@@ -21,10 +21,13 @@ const AddPizzaForm = (props) => {
   };
 
   return (
-    <Form>
-      <Input value={pizza.name} onChange={handleNameChange} />
-      <Button onClick={onSubmit}>Add</Button>
-    </Form>
+    <>
+      <h3>Register a Pizza</h3>
+      <Form>
+        <Input value={pizza.name} onChange={handleNameChange} />
+        <Button onClick={onSubmit}>Add</Button>
+      </Form>
+    </>
   );
 };
 
