@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 import './style.scss';
 import PropTypes from 'prop-types';
 import AddPizzaForm from 'components/AddPizzaForm';
-import { Card } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { useFetching } from '../../helpers/hooks';
 
@@ -31,9 +31,10 @@ export const PizzasList = ({ pizzas }) => (
         <Card.Group itemsPerRow={3}> {pizzas.map((pizza) => (
           <Card raised key={`pizza-card-${pizza.pizzaId}`}>
             <Card.Content header={pizza.name} />
-            <Card.Description style={{ backgroundColor: '#ddd' }}>
+            <Card.Description centered>
+              <PizzaItem key={`pizza${pizza.pizzaId}`} pizza={pizza} />
               <Link to={`/pizza/${pizza.pizzaId}`}>
-                <PizzaItem key={`pizza${pizza.pizzaId}`} pizza={pizza} />
+                <Button circular icon="settings" style={{ float: 'right' }} />
               </Link>
             </Card.Description>
           </Card>

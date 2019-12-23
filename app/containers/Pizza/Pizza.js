@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'semantic-ui-react';
 import { useFetching } from '../../helpers/hooks';
 
-export const EmptyList = () => (<li><p>There is no toppings on the system.</p></li>);
+export const EmptyList = () => (<i>There is no toppings on the system.</i>);
 export const Topping = (
   {
     topping,
@@ -11,14 +11,14 @@ export const Topping = (
     addToppingToPizzaHandler,
     removeToppingFromPizzaHandler
   }) => (
-  <li key={`li${topping.toppingId}`}>
+  <span key={`li${topping.toppingId}`}>
     <ToppingToggleButton
       key={topping.toppingId}
       initialActive={initialActive}
       name={topping.name}
       addToppingToPizzaHandler={() => addToppingToPizzaHandler(topping.toppingId)}
       removeToppingFromPizzaHandler={() => removeToppingFromPizzaHandler(topping.toppingId)} />
-  </li>
+  </span>
 );
 
 export const ToppingToggleButton = (
@@ -64,7 +64,8 @@ export const ToppingList = (
     <>
       <h3>Toppings</h3>
       <i>Please select the toppings for the pizza</i>
-      <ul>
+      <br />
+      <div>
         {(toppings.length === 0)
           ? <EmptyList />
           : toppings.map((topping) =>
@@ -72,7 +73,7 @@ export const ToppingList = (
               addToppingToPizzaHandler={addToppingToPizzaHandler}
               removeToppingFromPizzaHandler={removeToppingFromPizzaHandler}
               initialActive={toppingIds.includes(topping.toppingId)} />))}
-      </ul>
+      </div>
     </>
   );
 };

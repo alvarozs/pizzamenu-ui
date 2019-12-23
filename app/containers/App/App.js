@@ -18,6 +18,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import './style.scss';
+import { Divider } from 'semantic-ui-react';
 
 const App = () => (
   <div className="app-wrapper">
@@ -35,6 +36,7 @@ const App = () => (
       <Route path="/toppings" exact component={ToppingsPage} />
       <Route path="" component={NotFoundPage} />
     </Switch>
+    <Divider />
     <Footer />
   </div>
 );
