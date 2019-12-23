@@ -10,7 +10,8 @@ import {
   LOAD_PIZZA,
   LOAD_PIZZA_SUCCESS,
   LOAD_ALL_TOPPINGS,
-  ADD_TOPPING_TO_PIZZA } from './constants';
+  ADD_TOPPING_TO_PIZZA, REMOVE_TOPPING_FROM_PIZZA,
+} from './constants';
 import {
   pizzaLoaded,
   pizzaLoadingError,
@@ -44,7 +45,6 @@ export function* getToppings() {
 
   try {
     const toppings = yield call(request, requestURL);
-    console.log(toppings);
     yield put(toppingsLoaded(toppings));
   } catch (err) {
     yield put(toppingLoadingError(err));
@@ -53,7 +53,7 @@ export function* getToppings() {
 
 
 /**
- * Add a topping to given pizza
+ * Adds a topping to given pizza
  * @param pizza
  * @returns {IterableIterator<*>}
  */
@@ -61,10 +61,23 @@ export function* addToppingToPizza(action) {
   const requestURL = `http://localhost:8086/pizzas/${action.pizza}/toppings/${action.topping}`;
   try {
     const response = yield call(() => axios.post(requestURL));
-    console.log(response);
     // yield put(toppingAdded(response));
   } catch (err) {
     // yield put(toppingAddedError(err));
+  }
+}
+
+/**
+ * Removes a topping to given pizza
+ * @param pizza
+ * @returns {IterableIterator<*>}
+ */
+export function* removeToppingFromPizza(action) {
+  const requestURL = `http://localhost:8086/pizzas/${action.pizza}/toppings/${action.topping}`;
+  try {
+    const response = yield call(() => axios.delete(requestURL));
+  } catch (err) {
+    console.error(err);
   }
 }
 
@@ -75,4 +88,5 @@ export default function* rootSaga() {
   yield takeLatest(LOAD_PIZZA, getPizzaSaga);
   yield takeLatest(LOAD_ALL_TOPPINGS, getToppings);
   yield takeLatest(ADD_TOPPING_TO_PIZZA, addToppingToPizza);
+  yield takeLatest(REMOVE_TOPPING_FROM_PIZZA, removeToppingFromPizza);
 }

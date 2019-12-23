@@ -2,16 +2,32 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Button } from 'semantic-ui-react';
 import { useFetching } from '../../helpers/hooks';
-import { addToppingToPizza } from './actions';
 
 export const EmptyList = () => (<li><p>There is no toppings on the system.</p></li>);
-export const Topping = ({ topping, initialActive, addToppingToPizzaHandler }) => (
+export const Topping = (
+  {
+    topping,
+    initialActive,
+    addToppingToPizzaHandler,
+    removeToppingFromPizzaHandler
+  }) => (
   <li key={`li${topping.toppingId}`}>
-    <ToppingToggleButton key={topping.toppingId} initialActive={initialActive} name={topping.name} addToppingToPizzaHandler={() => addToppingToPizzaHandler(topping.toppingId)} />
+    <ToppingToggleButton
+      key={topping.toppingId}
+      initialActive={initialActive}
+      name={topping.name}
+      addToppingToPizzaHandler={() => addToppingToPizzaHandler(topping.toppingId)}
+      removeToppingFromPizzaHandler={() => removeToppingFromPizzaHandler(topping.toppingId)} />
   </li>
 );
 
-export const ToppingToggleButton = ({ name, initialActive, addToppingToPizzaHandler }) => {
+export const ToppingToggleButton = (
+  {
+    name,
+    initialActive,
+    addToppingToPizzaHandler,
+    removeToppingFromPizzaHandler
+  }) => {
   const [active, toggleActive] = useState(initialActive);
   useEffect(() => {
     toggleActive(initialActive);
@@ -19,10 +35,9 @@ export const ToppingToggleButton = ({ name, initialActive, addToppingToPizzaHand
 
   const handleClick = () => {
     if (!active) {
-      console.log('ADD TOPPING');
       addToppingToPizzaHandler();
     } else {
-      console.log('REMOVE TOPPING');
+      removeToppingFromPizzaHandler();
     }
 
     toggleActive(!active);
@@ -36,8 +51,13 @@ export const ToppingToggleButton = ({ name, initialActive, addToppingToPizzaHand
 };
 
 // candidate to be moved to its own js file for maintainability purpose
-export const ToppingList = ({ pizzaToppings = [], toppings = [], addToppingToPizzaHandler }) => {
-
+export const ToppingList = (
+  {
+    pizzaToppings = [],
+    toppings = [],
+    addToppingToPizzaHandler,
+    removeToppingFromPizzaHandler
+  }) => {
   const toppingIds = pizzaToppings.map((topping) => topping.toppingId);
 
   return (
@@ -48,15 +68,25 @@ export const ToppingList = ({ pizzaToppings = [], toppings = [], addToppingToPiz
         {(toppings.length === 0)
           ? <EmptyList />
           : toppings.map((topping) =>
-            (<Topping key={`topping${topping.toppingId}`} topping={topping} addToppingToPizzaHandler={addToppingToPizzaHandler} initialActive={toppingIds.includes(topping.toppingId)} />))}
+            (<Topping key={`topping${topping.toppingId}`} topping={topping}
+              addToppingToPizzaHandler={addToppingToPizzaHandler}
+              removeToppingFromPizzaHandler={removeToppingFromPizzaHandler}
+              initialActive={toppingIds.includes(topping.toppingId)} />))}
       </ul>
     </>
   );
 };
 
-const Pizza = ({ match, loadPizza, loadToppings, addToppingToPizza, pizza = { name: '', toppings: [] }, toppings }) => {
-  console.log(pizza, toppings);
-
+const Pizza = (
+  {
+    match,
+    loadPizza,
+    loadToppings,
+    addToppingToPizza,
+    removeToppingFromPizza,
+    pizza = { name: '', toppings: [] },
+    toppings
+  }) => {
   useFetching(loadPizza, match.params.id);
   useFetching(loadToppings);
 
@@ -64,10 +94,16 @@ const Pizza = ({ match, loadPizza, loadToppings, addToppingToPizza, pizza = { na
     addToppingToPizza(pizza.pizzaId, toppingId);
   };
 
+  const removeToppingFromPizzaHandler = (toppingId) => {
+    removeToppingFromPizza(pizza.pizzaId, toppingId);
+  };
+
   return (
     <>
       <h1>{`${pizza.name}`}</h1>
-      <ToppingList addToppingToPizzaHandler={addToppingToPizzaHandler} pizzaToppings={pizza.toppings} toppings={toppings} />
+      <ToppingList addToppingToPizzaHandler={addToppingToPizzaHandler}
+                   removeToppingFromPizzaHandler={removeToppingFromPizzaHandler}
+                   pizzaToppings={pizza.toppings} toppings={toppings} />
     </>
   );
 };

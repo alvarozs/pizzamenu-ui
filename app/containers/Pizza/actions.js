@@ -3,8 +3,11 @@ import {
   LOAD_PIZZA_SUCCESS,
   LOAD_PIZZA_ERROR,
   ADD_TOPPING_TO_PIZZA,
-  ADD_TOPPING_SUCCESS,
-  ADD_TOPPING_ERROR,
+  ADD_TOPPING_TO_PIZZA_SUCCESS,
+  ADD_TOPPING_TO_PIZZA_ERROR,
+  REMOVE_TOPPING_FROM_PIZZA,
+  REMOVE_TOPPING_FROM_PIZZA_SUCCESS,
+  REMOVE_TOPPING_FROM_PIZZA_ERROR,
   LOAD_ALL_TOPPINGS,
   LOAD_ALL_TOPPINGS_SUCCESS,
   LOAD_ALL_TOPPINGS_ERROR,
@@ -34,7 +37,7 @@ export function pizzaLoaded(pizza) {
 
 export function toppingAdded() {
   return {
-    type: ADD_TOPPING_SUCCESS
+    type: ADD_TOPPING_TO_PIZZA_SUCCESS
   };
 }
 
@@ -47,7 +50,7 @@ export function pizzaLoadingError(error) {
 
 export function toppingAddedError(error) {
   return {
-    type: ADD_TOPPING_ERROR,
+    type: ADD_TOPPING_TO_PIZZA_ERROR,
     error,
   };
 }
@@ -70,5 +73,13 @@ export function toppingLoadingError(error) {
   return {
     type: LOAD_ALL_TOPPINGS_ERROR,
     error,
+  };
+}
+
+export function removeToppingFromPizza(pizza, topping) {
+  return {
+    type: REMOVE_TOPPING_FROM_PIZZA,
+    pizza,
+    topping,
   };
 }

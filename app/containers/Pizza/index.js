@@ -8,7 +8,7 @@ import {
   makeSelectError,
   makeSelectToppings
 } from './selectors';
-import { loadPizza, loadToppings, addToppingToPizza } from './actions';
+import { loadPizza, loadToppings, addToppingToPizza, removeToppingFromPizza } from './actions';
 import saga from './saga';
 import Pizza from './Pizza';
 
@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   loadPizza: (id) => dispatch(loadPizza(id)),
   loadToppings: () => dispatch(loadToppings()),
   addToppingToPizza: (pizzaId, toppingId) => dispatch(addToppingToPizza(pizzaId, toppingId)),
+  removeToppingFromPizza: (pizzaId, toppingId) => dispatch(removeToppingFromPizza(pizzaId, toppingId)),
 });
 
 const mapStateToProps = createStructuredSelector({

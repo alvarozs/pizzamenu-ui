@@ -14,12 +14,11 @@ import { useFetching } from '../../helpers/hooks';
 
 export const EmptyList = () => (<p>There is no pizzas on the system.</p>);
 export const PizzaItem = ({ pizza }) => (
-  <>
-    <p>{pizza.name}</p>
+  <div>
     {pizza.toppings && pizza.toppings.map((topping) => (
-      <span key={`pizza${pizza.pizzaId}topping${topping.toppingId}`}>{topping.name}, </span>
+      <i key={`pizza${pizza.pizzaId}topping${topping.toppingId}`}>{topping.name}, </i>
     ))}
-  </>
+  </div>
 );
 
 // candidate to be moved to its own js file for maintainability purpose
@@ -29,11 +28,14 @@ export const PizzasList = ({ pizzas }) => (
     {(pizzas.length === 0)
       ? <EmptyList />
       : (
-        <Card.Group itemsPerRow={6}> {pizzas.map((pizza) => (
+        <Card.Group itemsPerRow={3}> {pizzas.map((pizza) => (
           <Card raised key={`pizza-card-${pizza.pizzaId}`}>
-            <Link to={`/pizza/${pizza.pizzaId}`}>
-              <PizzaItem key={`pizza${pizza.pizzaId}`} pizza={pizza} />
-            </Link>
+            <Card.Content header={pizza.name} />
+            <Card.Description style={{ backgroundColor: '#ddd' }}>
+              <Link to={`/pizza/${pizza.pizzaId}`}>
+                <PizzaItem key={`pizza${pizza.pizzaId}`} pizza={pizza} />
+              </Link>
+            </Card.Description>
           </Card>
         ))}
         </Card.Group>

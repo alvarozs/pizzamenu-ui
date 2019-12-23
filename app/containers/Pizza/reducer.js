@@ -15,7 +15,6 @@ export const initialState = {
 };
 
 function pizzaReducer(state = initialState, action) {
-  console.log(state, action);
   switch (action.type) {
     case LOAD_PIZZA: {
       const newState = {
