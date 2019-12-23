@@ -1,5 +1,5 @@
 /**
- * Asynchronously loads the component for PizzasPage
+ * Asynchronously loads the component for Pizza
  */
 import Loadable from 'react-loadable';
 

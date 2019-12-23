@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import PizzasPage from 'containers/PizzasPage/Loadable';
+import Pizza from 'containers/Pizza/Loadable';
 import ToppingsPage from 'containers/ToppingsPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
@@ -29,8 +30,9 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path="/pizzas" component={PizzasPage} />
-      <Route path="/toppings" component={ToppingsPage} />
+      <Route path="/pizza/:id" component={Pizza} />
+      <Route path="/pizzas" exact component={PizzasPage} />
+      <Route path="/toppings" exact component={ToppingsPage} />
       <Route path="" component={NotFoundPage} />
     </Switch>
     <Footer />

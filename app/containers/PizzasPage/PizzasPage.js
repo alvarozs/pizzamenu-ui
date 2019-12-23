@@ -31,7 +31,7 @@ export const PizzasList = ({ pizzas }) => (
       : (
         <Card.Group itemsPerRow={6}> {pizzas.map((pizza) => (
           <Card raised key={`pizza-card-${pizza.pizzaId}`}>
-            <Link to={`/pizzas/${pizza.pizzaId}`}>
+            <Link to={`/pizza/${pizza.pizzaId}`}>
               <Pizza key={`pizza${pizza.pizzaId}`} pizza={pizza} />
             </Link>
           </Card>
