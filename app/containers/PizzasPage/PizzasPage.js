@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import { useFetching } from '../../helpers/hooks';
 
 export const EmptyList = () => (<p>There is no pizzas on the system.</p>);
-export const Pizza = ({ pizza }) => (
+export const PizzaItem = ({ pizza }) => (
   <>
     <p>{pizza.name}</p>
     {pizza.toppings && pizza.toppings.map((topping) => (
@@ -32,7 +32,7 @@ export const PizzasList = ({ pizzas }) => (
         <Card.Group itemsPerRow={6}> {pizzas.map((pizza) => (
           <Card raised key={`pizza-card-${pizza.pizzaId}`}>
             <Link to={`/pizza/${pizza.pizzaId}`}>
-              <Pizza key={`pizza${pizza.pizzaId}`} pizza={pizza} />
+              <PizzaItem key={`pizza${pizza.pizzaId}`} pizza={pizza} />
             </Link>
           </Card>
         ))}
@@ -54,7 +54,6 @@ export default function PizzasPage({ loadPizzas, addPizza, pizzas = [] }) {
         />
       </Helmet>
       <PizzasList pizzas={pizzas} />
-      <br />
       <AddPizzaForm addPizza={(data) => addPizza(data)} />
     </div>
   );
@@ -74,7 +73,7 @@ PizzasList.propTypes = {
   )
 };
 
-Pizza.propTypes = {
+PizzaItem.propTypes = {
   pizza: PropTypes.shape({
     name: PropTypes.string,
   })

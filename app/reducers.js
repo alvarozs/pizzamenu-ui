@@ -7,6 +7,7 @@ import { connectRouter } from 'connected-react-router';
 
 import history from 'utils/history';
 import pizzasReducer from 'containers/PizzasPage/reducer';
+import pizzaReducer from 'containers/Pizza/reducer';
 import toppingsReducer from 'containers/ToppingsPage/reducer';
 
 /**
@@ -15,6 +16,7 @@ import toppingsReducer from 'containers/ToppingsPage/reducer';
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
     pizzas: pizzasReducer,
+    pizza: pizzaReducer,
     toppings: toppingsReducer,
     router: connectRouter(history),
     ...injectedReducers,

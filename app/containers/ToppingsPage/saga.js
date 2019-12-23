@@ -16,7 +16,7 @@ import {
 } from './actions';
 
 /**
- * Github repos request/response handler
+ * Gets toppings
  */
 export function* getToppings() {
   const requestURL = 'http://localhost:8086/toppings';

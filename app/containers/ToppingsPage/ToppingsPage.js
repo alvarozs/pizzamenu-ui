@@ -20,7 +20,7 @@ export const ToppingList = ({ toppings }) => (
     <ul>
       {(toppings.length === 0)
         ? <EmptyList />
-        : toppings.map((topping) => (<Topping key={`topping${topping.id}`} topping={topping} />))}
+        : toppings.map((topping) => (<Topping key={`topping${topping.toppingId}`} topping={topping} />))}
     </ul>
   </>
 );
